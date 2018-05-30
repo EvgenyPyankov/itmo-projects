@@ -1,7 +1,7 @@
 import com.tngtech.jgiven.junit.ScenarioTest;
 import org.junit.Test;
 
-public class DFSMCheckTest extends ScenarioTest<GivenInput, WhenInput, ThenInput> {
+public class DFSMCheckTest extends ScenarioTest<GivenInput, WhenInput, ThenOutput> {
 
     @Test
     public void aabc_is_valid_input() {
