@@ -74,10 +74,9 @@ public class Tokenizer {
     }
 
     public List<Token> tokenize(String str){
-        init(str);
+        init(str.trim());
 
         Token token = nextToken();
-
         while (!Types.END_TOKEN.equals(token) && token != null){
             System.out.println(token.getValue());
             token = nextToken();
@@ -86,7 +85,6 @@ public class Tokenizer {
     }
 
     private Tokenizer(){
-
     }
 
     private void init(String str){
@@ -107,17 +105,17 @@ public class Tokenizer {
         curTokenPos = curRow;
 
         if (isLetter(curCh)){
-            return processLetterToken();
+            return obtainLetterToken();
         }
         if (isDigit(curCh)){
-            return processConstToken();
+            return obtainConstToken();
         }
-        return processOtherTokens();
+        return obtainOtherTokens();
     }
 
     // Token processors
 
-    private Token processLetterToken(){
+    private Token obtainLetterToken(){
         String token = "";
         int i = curIndex;
         char ch = str.charAt(i);
@@ -133,12 +131,12 @@ public class Tokenizer {
             if (ids.indexOf(token) < 0){
                 ids.add(token);
             }
-            return addToken(Integer.toString(ids.indexOf(token)), Types.ID, getPosition());
+            return addToken(token, Types.ID, getPosition());
 
         }
     }
 
-    private Token processConstToken(){
+    private Token obtainConstToken(){
         String token = "";
         int i = curIndex;
         while (isDigit(str.charAt(i))){
@@ -149,7 +147,13 @@ public class Tokenizer {
         return addToken(token, Types.CONST, getPosition());
     }
 
-    private Token processOtherTokens(){
+
+    private Token obtainOtherTokens(){
+
+        if (isLineBreaker(curCh)){
+            incLine();
+            return nextToken();
+        }
 
         if (EMPTY_SYMBOLS.contains(curCh)){
             incIndex();
@@ -157,15 +161,15 @@ public class Tokenizer {
         }
 
         if (UNARY_OPERATIONS.contains(curCh)){
-            return addToken(String.valueOf(curCh), Types.UNARY_OPERATOR, getPosition());
+            return addToken(curCh, Types.UNARY_OPERATOR, getPosition());
         }
 
         if (SEPARATORS.contains(curCh)){
-            return addToken(String.valueOf(curCh), Types.SEPARATOR,  getPosition());
+            return addToken(curCh, Types.SEPARATOR,  getPosition());
         }
 
         if (BINARY_OPERATIONS.contains(curCh)){
-            return addToken(String.valueOf(curCh), Types.BINARY_OPERATOR,  getPosition());
+            return addToken(curCh, Types.BINARY_OPERATOR,  getPosition());
         }
 
         if (curCh == '='){
@@ -176,11 +180,16 @@ public class Tokenizer {
             }
         }
 
-        return addToken(String.valueOf(curCh), Types.UNDEFINED, getPosition());
+        if (isEndToken(curCh)){
+            return addToken(curCh, Types.END_TOKEN, getPosition());
+        }
+
+        return addToken(curCh, Types.UNDEFINED, getPosition());
     }
 
 
-    // Character checks
+    // Сhecks
+
     private boolean isDigit(char ch){
         return Character.isDigit(ch);
     }
@@ -188,7 +197,6 @@ public class Tokenizer {
     private boolean isLetter(char ch){
         return Character.isLetter(ch);
     }
-
 
     private boolean isKeyWord(String str) {
         return KEY_WORDS.contains(str);
@@ -204,7 +212,7 @@ public class Tokenizer {
 
 
 
-    //utils
+    // Utils
 
     private void decIndex(){
         curIndex--;
@@ -232,15 +240,15 @@ public class Tokenizer {
         return new Position(curLine, curTokenPos);
     }
 
-    private Token addToken(String value, Types type, Position pos){
+    private Token addToken(Object val, Types type, Position pos){
+        String value = String.valueOf(val);
+        if (Types.ID.equals(type)){
+            value = String.valueOf(ids.indexOf(value));
+        }
         Token token = new Token(value, type, pos);
         tokens.add(token);
         incIndex(value.length());
         return token;
-    }
-
-    public void setUnaryOperations(HashSet<Character> UNARY_OPERATIONS) {
-        this.UNARY_OPERATIONS = UNARY_OPERATIONS;
     }
 }
 

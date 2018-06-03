@@ -15,12 +15,24 @@ public class Scanner {
             .collect(Collectors.toCollection(HashSet::new));
     private final HashSet<String> BINARY_OPERATIONS =  Stream.of("&" , "," , "^" , "-" , "+" , "*" , "/" , ">" , "<" , "==")
             .collect(Collectors.toCollection(HashSet::new));
-    private final HashSet<Character> SEPARATORS =  Stream.of(',', ':', ';')
+    private final HashSet<Character> SEPARATORS =  Stream.of(',', ':', ';', '(', ')')
             .collect(Collectors.toCollection(HashSet::new));
     private final HashSet<Character> END_TOKEN =  Stream.of('.')
             .collect(Collectors.toCollection(HashSet::new));
-    private final HashSet<Character> EMPTY_SYMBOLS = Stream.of(' ', '\n', '\r')
+    private final HashSet<Character> EMPTY_SYMBOLS = Stream.of(' ', '\t', '\n', '\r')
             .collect(Collectors.toCollection(HashSet::new));
+//    private final Map<String, Integer> CODES = new HashMap<String, Integer>(){
+//        {
+//            put("Var")
+//        }
+//    }
+//    Map<String,String> test = new HashMap<String, String>()
+//    {
+//        {
+//            put(key1, value1);
+//            put(key2, value2);
+//        }
+//    };
 
     public Scanner(){
     }
@@ -48,7 +60,18 @@ public class Scanner {
                 .build();
 
         List<Token> tokens = tokenizer.tokenize(readFromFile(path));
+
 //
-        System.out.println(Arrays.toString(tokens.toArray()));
+//        System.out.println(Arrays.toString(tokens.toArray()));
+        print(tokens);
+    }
+
+    private void print(List<Token>tokens){
+        System.out.println("<type, value> (line, row)");
+        System.out.println("-------------------------");
+        for(Token token: tokens){
+            System.out.println(String.format("<%s, %s> (%d, %d)", token.getType(), token.getValue(), token.getPosition().getLine(), token.getPosition().getRow()));
+        }
+
     }
 }

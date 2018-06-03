@@ -5,6 +5,7 @@ public class Token {
     private String value;
     private Position position;
     private Types type;
+    private String token;
 
     public Token(String value, Types type, Position position) {
         this.value = value;
@@ -34,5 +35,21 @@ public class Token {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }

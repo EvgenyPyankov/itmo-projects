@@ -8,7 +8,7 @@ Begin
 	   ab = ab
 	ELSE
 		ab = ab
-	ab:=1
+	ab = 1
 	ab = !(ab+ab)
 	Begin
 	End
