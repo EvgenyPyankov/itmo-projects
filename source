@@ -1,0 +1,15 @@
+Var
+
+ab, c: Boolean;
+d: Decimal;
+
+Begin
+	IF (ab == ab)
+	   ab = ab
+	ELSE
+		ab = ab
+	ab:=1
+	ab = !(ab+ab)
+	Begin
+	End
+End.
