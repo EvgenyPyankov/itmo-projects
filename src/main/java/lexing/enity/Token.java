@@ -1,7 +1,6 @@
 package lexing.enity;
 
 public class Token {
-    private int code;
     private String value;
     private Position position;
     private Types type;
@@ -35,14 +34,6 @@ public class Token {
 
     public void setValue(String value) {
         this.value = value;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
     }
 
     public String getToken() {

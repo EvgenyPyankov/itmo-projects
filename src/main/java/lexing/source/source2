@@ -1,3 +1,5 @@
 Var
-ab, c: Boolean;
+ab, c: Integer;
+Begin
+    a
 End.

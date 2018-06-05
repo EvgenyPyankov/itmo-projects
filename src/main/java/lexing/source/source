@@ -1,15 +1,14 @@
 Var
 
 ab, c: Boolean;
-d: Decimal;
+m, d, k: Decimal;
 
 Begin
-	If (ab == ab)
-	   ab = ab
+	If (k == d)
+	    Begin
+	    m := d + m
+	    End
 	Else
-		ab = ab
-	ab = 1
-	ab = !(ab+ab)
-	Begin
-	End
+		c := 0
+	ab := 1
 End.
