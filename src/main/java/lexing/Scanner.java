@@ -1,5 +1,7 @@
 package lexing;
 
+import lexing.enity.Token;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -9,7 +11,7 @@ import java.util.stream.Stream;
 
 public class Scanner {
 
-    private final HashSet<String> KEY_WORDS =  Stream.of("Var", "End", "Begin", "Boolean", "Decimal", "IF", "ELSE")
+    private final HashSet<String> KEY_WORDS =  Stream.of("Var", "End", "Begin", "Boolean", "Decimal", "If", "Else")
             .collect(Collectors.toCollection(HashSet::new));
     private final HashSet<Character> UNARY_OPERATIONS =  Stream.of('!')
             .collect(Collectors.toCollection(HashSet::new));

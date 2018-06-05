@@ -4,9 +4,9 @@ ab, c: Boolean;
 d: Decimal;
 
 Begin
-	IF (ab == ab)
+	If (ab == ab)
 	   ab = ab
-	ELSE
+	Else
 		ab = ab
 	ab = 1
 	ab = !(ab+ab)

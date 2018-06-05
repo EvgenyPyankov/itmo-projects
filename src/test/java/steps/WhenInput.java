@@ -1,6 +1,9 @@
+package steps;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ExpectedScenarioState;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import hw2.DFSM;
 
 public class WhenInput extends Stage<WhenInput> {
     @ExpectedScenarioState

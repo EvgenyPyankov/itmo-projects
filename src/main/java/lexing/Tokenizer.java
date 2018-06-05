@@ -1,5 +1,9 @@
 package lexing;
 
+import lexing.enity.Position;
+import lexing.enity.Token;
+import lexing.enity.Types;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;

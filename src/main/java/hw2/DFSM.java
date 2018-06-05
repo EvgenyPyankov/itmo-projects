@@ -1,3 +1,5 @@
+package hw2;
+
 public class DFSM {
 
     public boolean check(String input){

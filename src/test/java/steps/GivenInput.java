@@ -1,5 +1,8 @@
+package steps;
+
 import com.tngtech.jgiven.Stage;
 import com.tngtech.jgiven.annotation.ProvidedScenarioState;
+import hw2.DFSM;
 
 public class GivenInput extends Stage<GivenInput>{
     @ProvidedScenarioState

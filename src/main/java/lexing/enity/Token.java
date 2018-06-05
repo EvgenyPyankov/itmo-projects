@@ -1,4 +1,4 @@
-package lexing;
+package lexing.enity;
 
 public class Token {
     private int code;

@@ -1,5 +1,8 @@
 import com.tngtech.jgiven.junit.ScenarioTest;
 import org.junit.Test;
+import steps.GivenInput;
+import steps.ThenOutput;
+import steps.WhenInput;
 
 public class DFSMCheckTest extends ScenarioTest<GivenInput, WhenInput, ThenOutput> {
 

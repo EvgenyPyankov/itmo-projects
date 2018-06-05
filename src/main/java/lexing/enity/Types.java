@@ -1,4 +1,4 @@
-package lexing;
+package lexing.enity;
 
 public enum Types {
     ID,
