@@ -1,7 +1,7 @@
 package lexing;
 
-import lexing.enity.Result;
-import lexing.enity.Token;
+import lexing.entity.Result;
+import lexing.entity.Token;
 
 import java.io.IOException;
 import java.nio.file.Files;

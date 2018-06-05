@@ -1,4 +1,4 @@
-package lexing.enity;
+package lexing.entity;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

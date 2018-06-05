@@ -1,4 +1,4 @@
-package lexing.enity;
+package lexing.entity;
 
 public class Position {
     private int line;
